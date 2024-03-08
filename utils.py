@@ -81,4 +81,14 @@ def read_optional_argument(arguments: list) -> tuple[Optional[int], Optional[int
                 display_menu_and_throw_exception(
                     f"Uknown optinal argument found: {badArgument}.")
 
+    if hours:
+        daysToAdd = hours / 24
+        hours = hours % 24
+        if days == None:
+            days = 0
+        days += daysToAdd
+    
+    if hours == None or (hours == 0 and days == None):
+    # if no days or hours set, we just check 8 hours in the past
+        hours = 8
     return (days, hours)
